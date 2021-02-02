@@ -48,7 +48,7 @@ class Article
                     </button>
                 </abbr>
             </div>
-
+            <input id="select-'.$id.'" type="checkbox" onclick="add_to_selection(this)" class="selection">
             <div id="details-'.$id.'" class="spoiler panel panel-info bg-purple-darker text-white text-left">
                 <div class="panel-heading article-heading clickable text-center">
                     

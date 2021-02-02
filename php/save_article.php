@@ -11,6 +11,7 @@ use parser as parse;
 
 $title = ' ';
 $img = '';
+$text ='';
 //Функция сохраняющая информацию.
 function save_article($url, $db,$domain_name='https://dailytargum.com')
 {
@@ -21,6 +22,7 @@ function save_article($url, $db,$domain_name='https://dailytargum.com')
   GLOBAL $title;
   $title = $parser->get_article_title($data);
   $date =  $parser->get_article_date($data);
+  GLOBAL $text;
   $text = $parser->get_article_text($data);
   GLOBAL $img;
   $img = $parser->get_article_img($data);
@@ -30,6 +32,9 @@ function save_article($url, $db,$domain_name='https://dailytargum.com')
   $success = $db->insert_articles($url, $title, $date, $text, $img);
 
   $result = $success ? 'Успешно сохранена статья' : 'Не удалось сохранить статью';
+
+
+
   return $result;
 
 }
@@ -49,9 +54,9 @@ echo $message;
 if(!session_id())
   session_start();
 
-if(isset($_SESSION['e-mail']))
+if(isset($_SESSION['e-mail']) && trim($_SESSION['e-mail'])!='')
 {
-  $mail = new sender($_SESSION['e-mail'],  $result, $message, realpath('.'.$img));
+  $mail = new sender($_SESSION['e-mail'],  $result."\t «".$title."»", $text, realpath('.'.$img));
   $mail->send();
 }
 

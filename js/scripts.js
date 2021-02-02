@@ -14,6 +14,7 @@ var upload_max_filesize = 2;//mb
 var is_orderby_desc = true;
 var current_page = 0;
 var page_LIMIT = 10;
+var selection = [];
 
 
 function change_orderby_desc_button()
@@ -678,5 +679,35 @@ function exit()
     window.location ="php/exit.php";
 }
 
+function toggle_selection()
+{
+	var checkboxes = document.getElementsByClassName('selection');
+    for(var i = 0; i < checkboxes.length; i++)
+    {
+        checkboxes[i].style.width =  (checkboxes[i].style.width != '100px') ? '100px' : '0';
+    }
 
+    var button = document.getElementById('mass_clear');
+    button.style.display = (button.style.display!="inline-block") ?"inline-block" : "none" ;
+
+
+    var button = document.getElementById('toggle_selection');
+    button.style.display = (button.style.display!="none") ?  "none" : "inline-block" ;
+}
+
+function add_to_selection(element)
+{
+	selection.push(element.parentNode.id);
+}
+
+
+function clear_selection()
+{
+	for(var i = 0; i < selection.length; i++)
+    {
+        delete_article(selection[i]); 
+    }
+    selection = [];
+    toggle_selection();
+}
 get_articles();

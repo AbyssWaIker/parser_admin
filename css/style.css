@@ -217,5 +217,13 @@ img
     border-bottom:1px solid #ccc;
 }
 
+.article  .selection
+{
 
-
+    height:200px;
+    width:0;
+}
+#mass_clear
+{
+  display: none;
+}

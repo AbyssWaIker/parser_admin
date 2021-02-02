@@ -1,22 +1,27 @@
 
 
-            <div id='sort' class="container d-flex justify-content-center panel panel-info bg-purple-dark text-white text-center m-2">
-                <span class='panel-title'>Показать:&nbsp</span>
-                <select id='limit' class="">
-                    <option value="2">2</option>
-                    <option value="5">5</option>
-                    <option value="10" selected>10</option>
-                    <option value="25">25</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                    <option value="0">Все</option>
-                </select>
-                <button class="btn btn-outline-info" onclick='change_orderby_desc_button()'>
-                    <span class='text-white' id='orderby_desc_button'>самых новых</span>
-                    <i class="fas fa-sort-numeric-down"></i>
-                </button>
-                <span class='panel-title'>&nbsp статей &nbsp&nbsp&nbsp</span>
-                <input id='searching' class='searching' type="text" name="search" maxlength='50' size="5" placeholder="seacrh" 
-                        onfocus="enable_search_field()" onblur="disable_empty_search_field()">
+            <div id='sort' class="container d-flex justify-content-between panel panel-info bg-purple-dark text-white text-center m-2">
+
+                <button id='toggle_selection'  onclick="toggle_selection()">Выбрать</button>
+                <button id='mass_clear' class='btn btn-outline-danger'  onclick="clear_selection()">Удалить выбранное</button>
+                <div>
+                    <span class='panel-title'>Показать:&nbsp</span>
+                    <select id='limit' class="">
+                        <option value="2">2</option>
+                        <option value="5">5</option>
+                        <option value="10" selected>10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="0">Все</option>
+                    </select>
+                    <button class="btn btn-outline-info" onclick='change_orderby_desc_button()'>
+                        <span class='text-white' id='orderby_desc_button'>самых новых</span>
+                        <i class="fas fa-sort-numeric-down"></i>
+                    </button>
+                    <span class='panel-title'>&nbsp статей &nbsp&nbsp&nbsp</span>
+                    <input id='searching' class='searching' type="text" name="search" maxlength='50' size="5" placeholder="seacrh" 
+                            onfocus="enable_search_field()" onblur="disable_empty_search_field()">
+                </div>
                 <button class="btn btn-outline-primary" onclick="update_articles_view()"><i class="fas fa-sync"></i> </button>
             </div>
